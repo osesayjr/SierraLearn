@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SierraLearn Privacy Policy — data handling, authentication, open licensing, and user rights.">
+  <title>Privacy Policy — SierraLearn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mesh-bg" aria-hidden="true">
+  <div class="mesh-orb mesh-orb-1"></div>
+</div>
+
+<nav class="navbar" role="navigation">
+  <div class="wide-container navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Sierra<span>Learn</span>
+    </a>
+    <div class="nav-right"></div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<main>
+<div class="prose-wrap wide-prose">
+
+  <div class="prose-eyebrow">Legal Document</div>
+  <h1>Privacy Policy</h1>
+  <p class="prose-subtitle">Last updated: June 2026 · Limkokwing University of Creative Technology, Sierra Leone · DLAW207</p>
+
+  <div class="prose-notice" role="note">
+    <strong>Plain-language summary:</strong> SierraLearn uses <strong>Supabase</strong> as its backend — a secure, GDPR-compliant cloud platform. Your account data (email, name, role) is stored in Supabase's PostgreSQL database hosted in the EU. Uploaded files are stored in Supabase Storage. We collect only what is necessary to run the platform. We do not sell, share, or use your data for advertising.
+  </div>
+
+  <h2>1. Who We Are</h2>
+  <p>
+    SierraLearn is an open educational resource platform developed as an academic project for the
+    <strong>DLAW207 IT Law and IPR Legal Issues</strong> module at Limkokwing University of Creative Technology,
+    Sierra Leone campus, Semester 06, March–July 2026. Its mission is to provide free, openly licensed
+    educational materials to students and teachers across Sierra Leone, aligned with
+    <strong>UN Sustainable Development Goal 4 — Quality Education</strong>.
+  </p>
+  <p>
+    The platform is licensed under the <strong>MIT License</strong> and qualifies as a
+    <strong>Digital Public Good (DPG)</strong> under the DPG Standard.
+  </p>
+
+  <h2>2. What Data We Collect</h2>
+  <p>We collect and store the following categories of data:</p>
+  <ul>
+    <li><strong>Account information:</strong> Your email address, full name, and role (student, teacher, or admin) when you register. This is stored in Supabase's secure PostgreSQL database.</li>
+    <li><strong>Resource metadata:</strong> Titles, descriptions, subjects, levels, tags, license types, contributor names, upload timestamps, download counts, and aggregate rating data for resources you upload.</li>
+    <li><strong>Uploaded files:</strong> If you upload a file (PDF, document, video, image), it is stored in Supabase Storage — a secure object storage service. Files are accessible via a public URL once a resource is approved.</li>
+    <li><strong>Rating data:</strong> When you rate a resource, your user ID and star score (1–5) are stored to prevent duplicate ratings. Ratings are not publicly attributed to you by name.</li>
+    <li><strong>Download counts:</strong> Anonymous numeric counters incremented each time a resource is downloaded. No user identity is linked to a download.</li>
+    <li><strong>Session tokens:</strong> Supabase Authentication issues secure JWT session tokens stored in your browser to keep you logged in. These expire automatically.</li>
+  </ul>
+  <p>
+    <strong>We do NOT collect:</strong> payment information, national ID numbers, location data, browser history, biometric data, or any data beyond what is listed above.
+  </p>
+
+  <h2>3. How Data Is Stored and Protected</h2>
+  <p>
+    All platform data is stored in <strong>Supabase</strong>, a secure, open-source backend platform that provides:
+  </p>
+  <ul>
+    <li>PostgreSQL database with <strong>Row Level Security (RLS)</strong> — database-level access rules that ensure users can only access data they are permitted to see.</li>
+    <li>Supabase Authentication with industry-standard <strong>bcrypt password hashing</strong> and <strong>JWT session management</strong>.</li>
+    <li>Supabase Storage with access control policies — only approved resources are publicly downloadable; unapproved files are restricted.</li>
+    <li>Data encrypted at rest and in transit using <strong>TLS/SSL</strong>.</li>
+    <li>Supabase infrastructure is hosted on <strong>AWS in the EU region</strong> and is SOC 2 compliant.</li>
+  </ul>
+
+  <h2>4. Role-Based Access Control</h2>
+  <p>SierraLearn enforces strict role-based access at both the application and database levels:</p>
+  <ul>
+    <li><strong>Guests (not logged in):</strong> Can browse and download approved resources only. Cannot upload, rate, or access any personal data.</li>
+    <li><strong>Students:</strong> Can browse, search, filter, download, and rate resources. Cannot upload resources.</li>
+    <li><strong>Teachers:</strong> Can do everything students can, plus submit resources for review. Submitted resources are invisible to the public until an admin approves them.</li>
+    <li><strong>Admins:</strong> Have full access to the admin dashboard — approve or reject submissions, manage all users (including changing roles), view all platform statistics, and delete resources.</li>
+  </ul>
+  <p>
+    Role assignments are enforced by Supabase Row Level Security policies. No user can escalate their own role — only an admin can change another user's role.
+  </p>
+
+  <h2>5. Content Approval Process</h2>
+  <p>
+    All resources submitted by teachers are placed in a <strong>pending</strong> state and are not visible to any public user until reviewed and approved by an admin. This moderation layer ensures:
+  </p>
+  <ul>
+    <li>Only openly licensed, educationally appropriate content reaches the public library.</li>
+    <li>Copyright-infringing or inappropriate material can be rejected before publication.</li>
+    <li>Teachers receive a rejection reason when their submission is declined, enabling improvement and resubmission.</li>
+  </ul>
+
+  <h2>6. Open Licensing</h2>
+  <p>All resources on SierraLearn must carry an approved open-source or open content license:</p>
+  <ul>
+    <li><strong>MIT License</strong> — permissive, maximum freedom, attribution appreciated.</li>
+    <li><strong>Apache License 2.0</strong> — permissive with explicit patent protection.</li>
+    <li><strong>Creative Commons Attribution 4.0 (CC BY 4.0)</strong> — share and adapt with credit.</li>
+    <li><strong>GNU General Public License 3.0 (GPL 3.0)</strong> — copyleft, derivatives must be open source.</li>
+  </ul>
+  <p>
+    By uploading a resource, contributors confirm they hold the rights to share the content under the chosen license.
+    SierraLearn takes no ownership of any uploaded content.
+  </p>
+
+  <h2>7. How We Use Your Data</h2>
+  <p>Your data is used solely to:</p>
+  <ul>
+    <li>Authenticate you and maintain your session across visits.</li>
+    <li>Display your name as the contributor of resources you upload.</li>
+    <li>Enforce role-based access control across the platform.</li>
+    <li>Track download counts and aggregate ratings to surface popular resources.</li>
+    <li>Enable the admin to manage the platform and content moderation queue.</li>
+    <li>Export resource metadata as open JSON for data interoperability.</li>
+  </ul>
+  <p>
+    Your data is <strong>never</strong> used for advertising, profiling, analytics tracking, or shared with any third party beyond Supabase (our infrastructure provider).
+  </p>
+
+  <h2>8. Your Rights</h2>
+  <ul>
+    <li><strong>Access:</strong> You can view your account information by signing in. Admins can export all resource metadata as JSON at any time.</li>
+    <li><strong>Correction:</strong> Contact the platform administrator to correct your name or email.</li>
+    <li><strong>Deletion:</strong> Admins can delete any user account and all associated resources. Users may request account deletion by contacting the admin.</li>
+    <li><strong>Portability:</strong> All resource metadata is exportable as open JSON from the library page.</li>
+    <li><strong>Withdrawal of consent:</strong> You may stop using the platform at any time. Session tokens expire automatically.</li>
+  </ul>
+
+  <h2>9. Data Protection Compliance</h2>
+  <ul>
+    <li>SierraLearn is designed in alignment with the <strong>Sierra Leone Data Protection Act</strong> and informed by GDPR principles of data minimisation, purpose limitation, and storage limitation.</li>
+    <li>Supabase, our infrastructure provider, is GDPR-compliant and SOC 2 certified.</li>
+    <li>Row Level Security ensures data isolation between users at the database level.</li>
+    <li>No data is processed for any purpose other than operating the platform.</li>
+    <li>SierraLearn qualifies as a <strong>Digital Public Good</strong> under the DPG Standard: open source, open data, no proprietary dependencies, SDG-aligned, and causes no harm.</li>
+  </ul>
+
+  <h2>10. Children's Privacy</h2>
+  <p>
+    SierraLearn serves students of all ages, including children. Registration requires an email address and name only — no sensitive personal data. No data about child users is shared with any third party. Parents or guardians may contact the admin to request deletion of a child's account.
+  </p>
+
+  <h2>11. Security Practices</h2>
+  <ul>
+    <li>Passwords are hashed using bcrypt — never stored in plain text.</li>
+    <li>All API calls use HTTPS with TLS encryption.</li>
+    <li>Supabase RLS policies enforce access rules at the database level, independent of application code.</li>
+    <li>All user-submitted text is sanitised before rendering to prevent Cross-Site Scripting (XSS).</li>
+    <li>JWT tokens are short-lived and refreshed automatically by Supabase Auth.</li>
+    <li>File uploads are restricted by type and size, and stored in a dedicated Supabase Storage bucket with access policies.</li>
+  </ul>
+
+  <h2>12. Third-Party Services</h2>
+  <p>SierraLearn uses one third-party service:</p>
+  <ul>
+    <li><strong>Supabase</strong> (supabase.com) — database, authentication, and file storage. Supabase's privacy policy is available at <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a>.</li>
+  </ul>
+  <p>No analytics services, advertising networks, social media trackers, or other third-party scripts are used.</p>
+
+  <h2>13. Changes to This Policy</h2>
+  <p>
+    Any changes will appear on this page with an updated date at the top. Continued use of the platform after changes constitutes acceptance of the updated policy.
+  </p>
+
+  <h2>14. Contact</h2>
+  <p>
+    This project was developed for DLAW207 at Limkokwing University of Creative Technology, Sierra Leone campus,
+    Semester 06, March–July 2026. Examiner: Ing. Sheku Dinneh Kamara.
+    For privacy queries, contact the project team through your university representative.
+  </p>
+
+  <div class="prose-notice" style="margin-top:48px;">
+    <strong>MIT License Notice:</strong> SierraLearn is open source under the MIT License. The full source code is
+    available on GitHub. You are free to fork, adapt, and deploy your own instance, provided the original
+    license notice is retained. This platform is a demonstrable Digital Public Good addressing SDG 4 in Sierra Leone.
+  </div>
+
+  <div style="display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;">
+    <a href="index.html" class="btn btn-outline" style="display:inline-flex;width:auto;">← Back to Library</a>
+    <a href="signup.html" class="btn btn-primary" style="display:inline-flex;width:auto;">
+      <svg viewBox="0 0 20 20" fill="white" style="width:16px;height:16px;flex-shrink:0"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+      Create an Account
+    </a>
+  </div>
+
+</div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="wide-container footer-inner">
+    <div><div class="footer-logo">Sierra<span>Learn</span></div><div class="footer-sub">Open educational resources for Sierra Leone · MIT License · SDG 4</div></div>
+    <nav class="footer-links"><a href="index.html">Library</a><a href="signup.html">Sign Up</a><a href="login.html">Sign In</a></nav>
+  </div>
+</footer>
+</div>
+
+<script type="module">
+  import { initAuth } from './auth.js';
+  document.addEventListener('DOMContentLoaded', () => initAuth());
+</script>
+</body>
+</html>

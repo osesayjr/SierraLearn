@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — SierraLearn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:var(--bg);">
+
+<nav class="navbar" role="navigation">
+  <div class="wide-container navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      Sierra<span>Learn</span>
+    </a>
+    <div class="nav-right"></div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <!-- Admin profile in sidebar -->
+    <div class="admin-sidebar-profile" id="sidebar-profile">
+      <div class="admin-sidebar-avatar" id="sb-avatar">AD</div>
+      <div><div class="admin-sidebar-name" id="sb-name">Admin</div><div class="admin-sidebar-role">Administrator</div></div>
+    </div>
+
+    <div class="admin-nav-section">Main</div>
+    <button class="admin-nav-link active" data-page="overview">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+      Overview
+    </button>
+
+    <div class="admin-nav-section">Content</div>
+    <button class="admin-nav-link" data-page="pending">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+      Pending Review
+      <span class="admin-nav-badge" id="pending-badge" style="display:none;">0</span>
+    </button>
+    <button class="admin-nav-link" data-page="resources">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/></svg>
+      All Resources
+    </button>
+    <button class="admin-nav-link" data-page="top">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      Top Content
+    </button>
+
+    <div class="admin-nav-section">Users</div>
+    <button class="admin-nav-link" data-page="users">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zm-3 3a4 4 0 00-4 4v1a1 1 0 001 1h6a1 1 0 001-1v-1a4 4 0 00-4-4zm10-3a3 3 0 11-6 0 3 3 0 016 0zm-3 3a4 4 0 00-4 4v1a1 1 0 001 1h6a1 1 0 001-1v-1a4 4 0 00-4-4z"/></svg>
+      Users
+    </button>
+
+    <div class="admin-nav-section">Platform</div>
+    <a class="admin-nav-link" href="index.html">
+      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+      Back to Library
+    </a>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="admin-main">
+
+    <!-- OVERVIEW -->
+    <div class="dash-page active" id="page-overview">
+      <div class="dash-header">
+        <h1>Dashboard Overview</h1>
+        <p>Welcome back! Here's what's happening on SierraLearn.</p>
+      </div>
+
+      <!-- Coloured stat cards -->
+      <div class="stat-grid">
+        <div class="stat-card stat-card-blue">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zm-3 3a4 4 0 00-4 4v1a1 1 0 001 1h6a1 1 0 001-1v-1a4 4 0 00-4-4zm10-3a3 3 0 11-6 0 3 3 0 016 0zm-3 3a4 4 0 00-4 4v1a1 1 0 001 1h6a1 1 0 001-1v-1a4 4 0 00-4-4z"/></svg></div>
+          <div class="stat-label">Total Students</div>
+          <div class="stat-value" id="st-students">—</div>
+          <div class="stat-sub">Registered learners</div>
+        </div>
+        <div class="stat-card stat-card-green">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg></div>
+          <div class="stat-label">Total Teachers</div>
+          <div class="stat-value" id="st-teachers">—</div>
+          <div class="stat-sub">Content contributors</div>
+        </div>
+        <div class="stat-card stat-card-yellow">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></div>
+          <div class="stat-label">Approved Resources</div>
+          <div class="stat-value" id="st-approved">—</div>
+          <div class="stat-sub">Live in library</div>
+        </div>
+        <div class="stat-card stat-card-red">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg></div>
+          <div class="stat-label">Pending Review</div>
+          <div class="stat-value" id="st-pending">—</div>
+          <div class="stat-sub">Awaiting approval</div>
+        </div>
+        <div class="stat-card stat-card-teal">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></div>
+          <div class="stat-label">Total Downloads</div>
+          <div class="stat-value" id="st-downloads">—</div>
+          <div class="stat-sub">Across all resources</div>
+        </div>
+        <div class="stat-card stat-card-purple">
+          <div class="stat-card-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+          <div class="stat-label">Total Ratings</div>
+          <div class="stat-value" id="st-ratings">—</div>
+          <div class="stat-sub">Community feedback</div>
+        </div>
+      </div>
+
+      <!-- Quick pending notice -->
+      <div id="pending-notice" style="display:none;background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.3);border-radius:var(--r-lg);padding:var(--sp-2) var(--sp-3);margin-bottom:var(--sp-4);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-2);">
+        <span style="font-size:0.95rem;color:#92400e;font-weight:600;" id="pending-notice-text"></span>
+        <button class="btn btn-xs" style="background:var(--yellow);color:#fff;border:none;" onclick="switchPage('pending')">Review Now →</button>
+      </div>
+    </div>
+
+    <!-- PENDING REVIEW -->
+    <div class="dash-page" id="page-pending">
+      <div class="dash-header">
+        <h1>Pending Review</h1>
+        <p>Resources submitted by teachers waiting for your approval</p>
+      </div>
+      <div class="data-table-wrap">
+        <div class="data-table-header">
+          <h2>Submissions Queue</h2>
+          <button class="btn btn-outline" id="refresh-pending" style="font-size:0.9rem;padding:8px 16px;">↻ Refresh</button>
+        </div>
+        <div id="pending-table-wrap"><div style="text-align:center;padding:var(--sp-5);color:var(--text-muted);">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- ALL RESOURCES -->
+    <div class="dash-page" id="page-resources">
+      <div class="dash-header"><h1>All Resources</h1><p>Every resource on the platform regardless of status</p></div>
+      <div class="data-table-wrap">
+        <div class="data-table-header">
+          <h2>Resources</h2>
+          <input type="search" id="resource-search" class="form-input" placeholder="Search by title…" style="max-width:280px;padding:9px 14px;">
+        </div>
+        <div id="resources-table-wrap"><div style="text-align:center;padding:var(--sp-5);color:var(--text-muted);">Loading…</div></div>
+      </div>
+    </div>
+
+    <!-- TOP CONTENT -->
+    <div class="dash-page" id="page-top">
+      <div class="dash-header"><h1>Top Content</h1><p>Most downloaded, most rated, and most liked resources</p></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:var(--sp-3);">
+        <!-- Most downloaded -->
+        <div class="data-table-wrap">
+          <div class="data-table-header"><h2>🏆 Most Downloaded</h2></div>
+          <ul class="top-list" id="top-downloads"><li style="padding:var(--sp-3);color:var(--text-muted);text-align:center;">Loading…</li></ul>
+        </div>
+        <!-- Most rated -->
+        <div class="data-table-wrap">
+          <div class="data-table-header"><h2>⭐ Highest Rated</h2></div>
+          <ul class="top-list" id="top-rated"><li style="padding:var(--sp-3);color:var(--text-muted);text-align:center;">Loading…</li></ul>
+        </div>
+        <!-- Most liked -->
+        <div class="data-table-wrap">
+          <div class="data-table-header"><h2>❤️ Most Liked</h2></div>
+          <ul class="top-list" id="top-liked"><li style="padding:var(--sp-3);color:var(--text-muted);text-align:center;">Loading…</li></ul>
+        </div>
+        <!-- Top teachers -->
+        <div class="data-table-wrap">
+          <div class="data-table-header"><h2>👨‍🏫 Top Teachers</h2></div>
+          <ul class="top-list" id="top-teachers"><li style="padding:var(--sp-3);color:var(--text-muted);text-align:center;">Loading…</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- USERS -->
+    <div class="dash-page" id="page-users">
+      <div class="dash-header"><h1>User Management</h1><p>All registered users — change roles or remove accounts</p></div>
+      <div class="data-table-wrap">
+        <div class="data-table-header">
+          <h2>Users</h2>
+          <input type="search" id="user-search" class="form-input" placeholder="Search by name or email…" style="max-width:280px;padding:9px 14px;">
+        </div>
+        <div id="users-table-wrap"><div style="text-align:center;padding:var(--sp-5);color:var(--text-muted);">Loading…</div></div>
+      </div>
+    </div>
+
+  </div><!-- end admin-main -->
+</div><!-- end admin-layout -->
+</div><!-- end page-wrap -->
+
+<!-- Reject modal -->
+<div class="reject-modal-overlay" id="reject-modal" role="dialog" aria-modal="true">
+  <div class="reject-modal">
+    <h3 style="margin-bottom:8px;">Reject Resource</h3>
+    <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:var(--sp-2);">Provide a reason so the teacher knows how to improve and resubmit.</p>
+    <div class="form-group">
+      <label class="form-label" for="reject-note">Rejection Reason</label>
+      <textarea id="reject-note" class="form-textarea" rows="3" placeholder="e.g. Missing license info, content not educational…" style="min-height:80px;"></textarea>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-ghost" id="reject-cancel">Cancel</button>
+      <button class="btn btn-danger" id="reject-confirm">Reject Resource</button>
+    </div>
+  </div>
+</div>
+
+<div class="alert-top" id="sl-alert-top"></div>
+
+<script type="module">
+  import { initAuth, currentProfile } from './auth.js';
+  import { fetchAdminStats, adminFetchAllResources, adminFetchAllUsers, approveResource, rejectResource, deleteResource, adminChangeUserRole, adminDeleteUser, fetchTopResources, fetchTopTeachers, createNotification } from './supabase.js';
+
+  function sx(s){return s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function fmtDate(iso){return!iso?'—':new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+
+  function alertTop(msg,type='success'){
+    const el=document.getElementById('sl-alert-top');
+    el.className=`alert-top alert-top-${type}`;
+    el.innerHTML=`<span class="alert-top-icon alert-icon-${type}"><svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span><span>${msg}</span>`;
+    void el.offsetWidth;el.classList.add('alert-top-show');
+    setTimeout(()=>el.classList.remove('alert-top-show'),3800);
+  }
+
+  let pendingRejectId=null, pendingRejectPath=null, rejectUploderId=null, rejectResourceTitle=null;
+  let allResources=[], allUsers=[];
+  let pagesLoaded={pending:false,resources:false,users:false,top:false};
+
+  window.switchPage=function(page){
+    document.querySelectorAll('.admin-nav-link[data-page]').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.dash-page').forEach(p=>p.classList.remove('active'));
+    document.querySelector(`[data-page="${page}"]`)?.classList.add('active');
+    document.getElementById('page-'+page)?.classList.add('active');
+    if(page==='pending'&&!pagesLoaded.pending){loadPending();pagesLoaded.pending=true;}
+    if(page==='resources'&&!pagesLoaded.resources){loadResources();pagesLoaded.resources=true;}
+    if(page==='users'&&!pagesLoaded.users){loadUsers();pagesLoaded.users=true;}
+    if(page==='top'&&!pagesLoaded.top){loadTop();pagesLoaded.top=true;}
+  };
+
+  document.addEventListener('DOMContentLoaded',async()=>{
+    const profile=await initAuth('admin');
+    if(!profile)return;
+    /* Sidebar profile */
+    const init=profile.full_name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    document.getElementById('sb-name').textContent=profile.full_name;
+    if(profile.avatar_url){document.getElementById('sb-avatar').innerHTML=`<img src="${profile.avatar_url}" alt="${sx(init)}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;}
+    else{document.getElementById('sb-avatar').textContent=init;}
+
+    /* Sidebar nav */
+    document.querySelectorAll('.admin-nav-link[data-page]').forEach(btn=>{
+      btn.addEventListener('click',()=>switchPage(btn.dataset.page));
+    });
+    /* Reject modal */
+    document.getElementById('reject-cancel').addEventListener('click',()=>{document.getElementById('reject-modal').classList.remove('open');pendingRejectId=null;});
+    document.getElementById('reject-modal').addEventListener('click',e=>{if(e.target===document.getElementById('reject-modal'))document.getElementById('reject-modal').classList.remove('open');});
+    document.getElementById('reject-confirm').addEventListener('click',async()=>{
+      if(!pendingRejectId)return;
+      const note=document.getElementById('reject-note').value.trim();
+      try{
+        await rejectResource(pendingRejectId,note);
+        /* Notify teacher */
+        if(rejectUploderId){
+          await createNotification({userId:rejectUploderId,type:'rejected',message:`Your resource "${rejectResourceTitle}" was rejected${note?'. Reason: '+note:''}`,resourceId:pendingRejectId});
+        }
+        document.getElementById('reject-modal').classList.remove('open');
+        alertTop('Resource rejected — teacher notified.','success');
+        pagesLoaded.pending=false;pagesLoaded.resources=false;
+        loadPending();loadStats();
+      }catch(e){alertTop('Failed: '+e.message,'warn');}
+    });
+    document.getElementById('refresh-pending').addEventListener('click',()=>{pagesLoaded.pending=false;loadPending();});
+    document.getElementById('resource-search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();renderResourcesTable(q?allResources.filter(r=>r.title.toLowerCase().includes(q)||r.uploader_name?.toLowerCase().includes(q)):allResources);});
+    document.getElementById('user-search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();renderUsersTable(q?allUsers.filter(u=>(u.full_name||'').toLowerCase().includes(q)||(u.email||'').toLowerCase().includes(q)):allUsers);});
+
+    loadStats();
+    loadPending();pagesLoaded.pending=true;
+  });
+
+  async function loadStats(){
+    try{
+      const s=await fetchAdminStats();
+      const users=await adminFetchAllUsers();
+      document.getElementById('st-students').textContent=users.filter(u=>u.role==='student').length;
+      document.getElementById('st-teachers').textContent=users.filter(u=>u.role==='teacher').length;
+      document.getElementById('st-approved').textContent=s.approved_resources||0;
+      document.getElementById('st-pending').textContent=s.pending_resources||0;
+      document.getElementById('st-downloads').textContent=(s.total_downloads||0).toLocaleString();
+      document.getElementById('st-ratings').textContent=(s.total_ratings||0).toLocaleString();
+      const pb=document.getElementById('pending-badge');
+      const cnt=s.pending_resources||0;
+      pb.textContent=cnt;pb.style.display=cnt>0?'inline':'none';
+      const notice=document.getElementById('pending-notice');
+      if(cnt>0){notice.style.display='flex';document.getElementById('pending-notice-text').textContent=`⚠️ ${cnt} resource${cnt>1?'s':''} awaiting your review`;}
+      else{notice.style.display='none';}
+    }catch(e){console.error('Stats error',e);}
+  }
+
+  async function loadPending(){
+    const wrap=document.getElementById('pending-table-wrap');
+    wrap.innerHTML='<div style="text-align:center;padding:var(--sp-4);color:var(--text-muted);">Loading…</div>';
+    try{
+      const all=await adminFetchAllResources();
+      const pending=all.filter(r=>r.status==='pending');
+      const pb=document.getElementById('pending-badge');
+      pb.textContent=pending.length;pb.style.display=pending.length>0?'inline':'none';
+      if(!pending.length){
+        wrap.innerHTML=`<div class="table-empty"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><p>All caught up — no pending submissions!</p></div>`;
+        return;
+      }
+      wrap.innerHTML=`<table class="data-table"><thead><tr><th>Resource</th><th>Teacher</th><th>Subject</th><th>Type</th><th>Submitted</th><th>Actions</th></tr></thead><tbody id="pending-tbody"></tbody></table>`;
+      const tbody=document.getElementById('pending-tbody');
+      pending.forEach(r=>{
+        const tr=document.createElement('tr');tr.className='row-pending';
+        tr.innerHTML=`
+          <td><div style="font-weight:600;color:var(--text-dark);margin-bottom:2px;">${sx(r.title)}</div><div style="font-size:0.8rem;color:var(--text-muted);">${sx(r.license)}</div></td>
+          <td>${sx(r.profiles?.full_name||r.uploader_name||'—')}</td>
+          <td>${sx(r.subject)}</td>
+          <td><span style="text-transform:uppercase;font-size:0.8rem;font-weight:600;">${sx(r.type)}</span></td>
+          <td>${fmtDate(r.created_at)}</td>
+          <td><div class="table-actions">
+            <button class="btn btn-xs btn-approve" data-id="${r.id}" data-uid="${r.uploader_id}" data-title="${sx(r.title)}">✓ Approve</button>
+            <button class="btn btn-xs btn-reject"  data-id="${r.id}" data-path="${r.storage_path||''}" data-uid="${r.uploader_id}" data-title="${sx(r.title)}">✕ Reject</button>
+            <a href="resource.html?id=${r.id}" target="_blank" class="btn btn-xs btn-outline" style="text-decoration:none;">Preview</a>
+          </div></td>`;
+        tr.querySelector('.btn-approve').addEventListener('click',async btn=>{
+          try{
+            await approveResource(r.id);
+            /* Notify teacher */
+            if(r.uploader_id){await createNotification({userId:r.uploader_id,type:'approved',message:`Your resource "${r.title}" has been approved and is now live!`,resourceId:r.id});}
+            alertTop('"'+r.title+'" approved ✓','success');
+            pagesLoaded.pending=false;loadPending();loadStats();
+          }catch(e){alertTop('Failed: '+e.message,'warn');}
+        });
+        tr.querySelector('.btn-reject').addEventListener('click',()=>{
+          pendingRejectId=r.id;pendingRejectPath=r.storage_path||null;
+          rejectUploderId=r.uploader_id;rejectResourceTitle=r.title;
+          document.getElementById('reject-note').value='';
+          document.getElementById('reject-modal').classList.add('open');
+        });
+        tbody.appendChild(tr);
+      });
+    }catch(e){wrap.innerHTML=`<div style="color:var(--red);padding:var(--sp-3);">Error: ${e.message}</div>`;}
+  }
+
+  async function loadResources(){
+    const wrap=document.getElementById('resources-table-wrap');
+    wrap.innerHTML='<div style="text-align:center;padding:var(--sp-4);color:var(--text-muted);">Loading…</div>';
+    try{allResources=await adminFetchAllResources();renderResourcesTable(allResources);}
+    catch(e){wrap.innerHTML=`<div style="color:var(--red);padding:var(--sp-3);">Error: ${e.message}</div>`;}
+  }
+
+  function renderResourcesTable(resources){
+    const wrap=document.getElementById('resources-table-wrap');
+    if(!resources.length){wrap.innerHTML='<div class="table-empty"><p>No resources found.</p></div>';return;}
+    wrap.innerHTML=`<table class="data-table"><thead><tr><th>Title</th><th>Teacher</th><th>Subject</th><th>Status</th><th>Downloads</th><th>Likes</th><th>Submitted</th><th>Actions</th></tr></thead><tbody id="res-tbody"></tbody></table>`;
+    const tbody=document.getElementById('res-tbody');
+    resources.forEach(r=>{
+      const sc=r.status==='approved'?'status-approved':r.status==='rejected'?'status-rejected':'status-pending';
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td><div style="font-weight:600;color:var(--text-dark);">${sx(r.title)}</div><div style="font-size:0.8rem;color:var(--text-muted);">${sx(r.license)} · ${sx(r.type?.toUpperCase())}</div></td>
+        <td>${sx(r.profiles?.full_name||r.uploader_name||'—')}</td>
+        <td>${sx(r.subject)}</td>
+        <td><span class="status-badge ${sc}">${sx(r.status)}</span></td>
+        <td>${(r.downloads||0).toLocaleString()}</td>
+        <td>${(r.like_count||0).toLocaleString()}</td>
+        <td>${fmtDate(r.created_at)}</td>
+        <td><div class="table-actions">
+          ${r.status!=='approved'?`<button class="btn btn-xs btn-approve" data-id="${r.id}" data-uid="${r.uploader_id}" data-title="${sx(r.title)}">Approve</button>`:''}
+          ${r.status==='approved'?`<button class="btn btn-xs btn-reject" data-id="${r.id}" data-path="${r.storage_path||''}" data-uid="${r.uploader_id}" data-title="${sx(r.title)}">Reject</button>`:''}
+          <button class="btn btn-xs btn-danger del-res" data-id="${r.id}" data-path="${r.storage_path||''}">Delete</button>
+        </div></td>`;
+      tr.querySelector('.btn-approve')?.addEventListener('click',async()=>{
+        try{
+          await approveResource(r.id);
+          if(r.uploader_id){await createNotification({userId:r.uploader_id,type:'approved',message:`Your resource "${r.title}" has been approved and is now live!`,resourceId:r.id});}
+          alertTop('Approved ✓','success');pagesLoaded.resources=false;loadResources();loadStats();
+        }catch(e){alertTop('Failed: '+e.message,'warn');}
+      });
+      tr.querySelector('.btn-reject')?.addEventListener('click',()=>{
+        pendingRejectId=r.id;pendingRejectPath=r.storage_path||null;
+        rejectUploderId=r.uploader_id;rejectResourceTitle=r.title;
+        document.getElementById('reject-note').value='';
+        document.getElementById('reject-modal').classList.add('open');
+      });
+      tr.querySelector('.del-res')?.addEventListener('click',async()=>{
+        if(!confirm('Permanently delete "'+r.title+'"?'))return;
+        try{await deleteResource(r.id,r.storage_path||null);alertTop('Deleted.','success');pagesLoaded.resources=false;loadResources();loadStats();}
+        catch(e){alertTop('Failed: '+e.message,'warn');}
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function loadTop(){
+    try{
+      const {byDownloads,byRating,byLikes}=await fetchTopResources();
+      const teachers=await fetchTopTeachers();
+      const rankClass=i=>i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+      const renderList=(el,items,valueFn)=>{
+        el.innerHTML='';
+        if(!items.length){el.innerHTML='<li style="padding:var(--sp-3);color:var(--text-muted);text-align:center;">No data yet</li>';return;}
+        items.forEach((item,i)=>{
+          const li=document.createElement('li');li.className='top-list-item';
+          li.innerHTML=`<div class="top-list-rank ${rankClass(i)}">${i+1}</div><div class="top-list-info"><div class="top-list-title">${sx(item.title||item.name)}</div><div class="top-list-meta">${sx(item.uploader_name||'')}</div></div><div class="top-list-value">${valueFn(item)}</div>`;
+          li.addEventListener('click',()=>{if(item.id)window.open('resource.html?id='+item.id,'_blank');});
+          li.style.cursor=item.id?'pointer':'default';
+          el.appendChild(li);
+        });
+      };
+      renderList(document.getElementById('top-downloads'),byDownloads,r=>(r.downloads||0).toLocaleString()+' DL');
+      renderList(document.getElementById('top-rated'),byRating,r=>r.rating_count?(Math.round(r.rating_sum/r.rating_count*10)/10)+' ★':'0 ★');
+      renderList(document.getElementById('top-liked'),byLikes,r=>(r.like_count||0)+' ❤️');
+      renderList(document.getElementById('top-teachers'),teachers,t=>t.count+' uploads');
+    }catch(e){console.error('Top content error',e);}
+  }
+
+  async function loadUsers(){
+    const wrap=document.getElementById('users-table-wrap');
+    wrap.innerHTML='<div style="text-align:center;padding:var(--sp-4);color:var(--text-muted);">Loading…</div>';
+    try{allUsers=await adminFetchAllUsers();renderUsersTable(allUsers);}
+    catch(e){wrap.innerHTML=`<div style="color:var(--red);padding:var(--sp-3);">Error: ${e.message}</div>`;}
+  }
+
+  function renderUsersTable(users){
+    const wrap=document.getElementById('users-table-wrap');
+    if(!users.length){wrap.innerHTML='<div class="table-empty"><p>No users found.</p></div>';return;}
+    wrap.innerHTML=`<table class="data-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Joined</th><th>Actions</th></tr></thead><tbody id="users-tbody"></tbody></table>`;
+    const tbody=document.getElementById('users-tbody');
+    users.forEach(u=>{
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td><div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--sky-dark),var(--sky));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;overflow:hidden;">
+            ${u.avatar_url?`<img src="${u.avatar_url}" style="width:100%;height:100%;object-fit:cover;">`:(u.full_name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}
+          </div>
+          <span style="font-weight:600;color:var(--text-dark);">${sx(u.full_name)}</span>
+        </div></td>
+        <td style="color:var(--text-muted);font-size:0.9rem;">${sx(u.email)}</td>
+        <td><select class="filter-select role-select" data-uid="${u.id}" style="padding:6px 28px 6px 10px;font-size:0.85rem;">
+          <option value="student" ${u.role==='student'?'selected':''}>Student</option>
+          <option value="teacher" ${u.role==='teacher'?'selected':''}>Teacher</option>
+          <option value="admin"   ${u.role==='admin'  ?'selected':''}>Admin</option>
+        </select></td>
+        <td style="font-size:0.9rem;color:var(--text-muted);">${fmtDate(u.created_at)}</td>
+        <td><button class="btn btn-xs btn-danger del-user" data-uid="${u.id}" data-name="${sx(u.full_name)}">Remove</button></td>`;
+      tr.querySelector('.role-select').addEventListener('change',async e=>{
+        try{await adminChangeUserRole(u.id,e.target.value);alertTop('Role updated to '+e.target.value+' ✓','success');loadStats();}
+        catch(err){alertTop('Failed: '+err.message,'warn');e.target.value=u.role;}
+      });
+      tr.querySelector('.del-user').addEventListener('click',async()=>{
+        if(!confirm('Remove user "'+u.full_name+'"? This will also delete their resources.'))return;
+        try{await adminDeleteUser(u.id);alertTop('User removed.','success');pagesLoaded.users=false;loadUsers();loadStats();}
+        catch(e){alertTop('Failed: '+e.message,'warn');}
+      });
+      tbody.appendChild(tr);
+    });
+  }
+</script>
+</body>
+</html>

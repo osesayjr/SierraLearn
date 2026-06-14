@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource — SierraLearn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="mesh-bg" aria-hidden="true"><div class="mesh-orb mesh-orb-1"></div><div class="mesh-orb mesh-orb-2"></div></div>
+
+<nav class="navbar" role="navigation">
+  <div class="wide-container navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      Sierra<span>Learn</span>
+    </a>
+    <div class="nav-right"></div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<main>
+<div class="wide-container" style="padding-top:40px;padding-bottom:100px;">
+
+  <div id="loading-state">
+    <div style="height:22px;width:260px;margin-bottom:28px;border-radius:6px;background:var(--border);"></div>
+    <div style="height:220px;border-radius:24px 24px 0 0;background:var(--card-bg);"></div>
+    <div style="height:300px;border-radius:0 0 24px 24px;background:var(--bg-white);border:1px solid var(--border);border-top:none;"></div>
+  </div>
+
+  <div id="not-found" style="display:none;text-align:center;padding:100px 20px;">
+    <div style="font-size:3rem;margin-bottom:18px;opacity:0.4">❓</div>
+    <h2 style="font-size:1.8rem;margin-bottom:12px;">Resource Not Found</h2>
+    <p style="color:var(--text-muted);margin-bottom:28px;">This resource may not exist or hasn't been approved yet.</p>
+    <a href="index.html" class="btn btn-primary" style="display:inline-flex;width:auto;">← Back to Library</a>
+  </div>
+
+  <div id="detail-content" style="display:none;">
+    <div class="detail-layout">
+
+      <!-- LEFT -->
+      <article>
+        <div class="detail-hero">
+          <div class="detail-hero-glow" aria-hidden="true"></div>
+          <nav class="detail-breadcrumb">
+            <a href="index.html">Library</a><span style="color:var(--text-faint)">›</span>
+            <span id="bc-subject"></span><span style="color:var(--text-faint)">›</span>
+            <span id="bc-title" style="color:var(--text-card-sub)"></span>
+          </nav>
+          <div class="detail-type-pill" id="detail-type-pill"></div>
+          <h1 class="detail-title" id="detail-title">Loading…</h1>
+          <p class="detail-desc" id="detail-desc"></p>
+          <div class="detail-chips" id="detail-chips"></div>
+          <div style="margin-top:16px;position:relative;z-index:1;display:flex;align-items:center;gap:6px;font-size:0.9rem;color:#475569;">
+            <svg style="width:14px;height:14px;fill:#475569;flex-shrink:0" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            Uploaded <span id="detail-timestamp" style="margin-left:3px;font-weight:600;"></span>
+            <span style="margin:0 4px;color:var(--text-faint)">·</span>
+            <span id="detail-fulldate"></span>
+          </div>
+        </div>
+
+        <div class="detail-body">
+
+          <div class="detail-section reveal">
+            <div class="detail-section-label">About this Resource</div>
+            <p id="detail-full-desc" style="color:var(--text-mid);font-size:1.05rem;line-height:1.8;"></p>
+          </div>
+
+          <div class="detail-section reveal">
+            <div class="detail-section-label">Details</div>
+            <div class="meta-grid">
+              <div class="meta-block"><div class="meta-block-label">Subject</div><div class="meta-block-value" id="meta-subject">—</div></div>
+              <div class="meta-block"><div class="meta-block-label">Level</div><div class="meta-block-value" id="meta-level">—</div></div>
+              <div class="meta-block"><div class="meta-block-label">Type</div><div class="meta-block-value" id="meta-type">—</div></div>
+              <div class="meta-block"><div class="meta-block-label">File Size</div><div class="meta-block-value" id="meta-size">—</div></div>
+              <div class="meta-block"><div class="meta-block-label">Downloads</div><div class="meta-block-value" id="meta-dl">0</div></div>
+              <div class="meta-block"><div class="meta-block-label">Avg Rating</div><div class="meta-block-value" id="meta-rating">0</div></div>
+            </div>
+          </div>
+
+          <div class="detail-section reveal">
+            <div class="detail-section-label">Contributor</div>
+            <div class="contributor-block">
+              <div class="contributor-avatar" id="contrib-avatar">??</div>
+              <div><div class="contributor-name" id="contrib-name">—</div><div class="contributor-role">Content Contributor</div></div>
+              <div class="contributor-badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Verified</div>
+            </div>
+          </div>
+
+          <!-- Rating widget -->
+          <div class="detail-section reveal">
+            <div class="detail-section-label">Rate this Resource</div>
+            <div id="rating-mount"></div>
+          </div>
+
+          <!-- License -->
+          <div class="detail-section reveal">
+            <div class="detail-section-label">License &amp; Legal</div>
+            <div class="license-accord open" id="license-accord">
+              <div class="license-accord-head" id="license-head" role="button" tabindex="0" aria-expanded="true">
+                <span id="license-chip-el" class="license-chip chip-mit">MIT</span>
+                <span class="license-accord-title" id="license-title">MIT License</span>
+                <span class="license-accord-arrow"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+              </div>
+              <div class="license-accord-body">
+                <p id="license-summary" style="font-size:0.95rem;color:var(--text-mid);margin-bottom:16px;line-height:1.7;"></p>
+                <div id="license-perms"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comments section -->
+          <div class="detail-section reveal">
+            <div class="detail-section-label">Comments <span id="comment-count-label" style="color:var(--text-faint);font-weight:400;font-size:0.85rem;text-transform:none;letter-spacing:0;"></span></div>
+            <div id="comments-mount"></div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- RIGHT: Sidebar -->
+      <aside class="detail-sidebar" id="detail-sidebar" style="display:none;">
+        <div class="action-card">
+          <div class="action-card-title">Get This Resource</div>
+
+          <!-- Download / guest prompt -->
+          <div id="download-section"></div>
+
+          <button class="btn btn-outline btn-full" id="copy-link-btn" style="margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:6px;">
+            <svg style="width:15px;height:15px;fill:currentColor" viewBox="0 0 20 20"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg>
+            Copy Link
+          </button>
+          <a href="index.html" class="btn btn-ghost btn-full" style="display:flex;justify-content:center;margin-top:8px;">← Back to Library</a>
+
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+            <div class="dl-stat"><span class="dl-stat-label">Downloads</span><span class="dl-stat-value" id="s-dl">0</span></div>
+            <div class="dl-stat"><span class="dl-stat-label">Likes</span><span class="dl-stat-value" id="s-likes">0</span></div>
+            <div class="dl-stat"><span class="dl-stat-label">Avg Rating</span><span class="dl-stat-value" id="s-avg">0</span></div>
+            <div class="dl-stat"><span class="dl-stat-label">Total Ratings</span><span class="dl-stat-value" id="s-rcount">0</span></div>
+            <div class="dl-stat"><span class="dl-stat-label">License</span><span class="dl-stat-value" id="s-lic">—</span></div>
+            <div class="dl-stat"><span class="dl-stat-label">Uploaded</span><span class="dl-stat-value" id="s-date">—</span></div>
+          </div>
+        </div>
+
+        <!-- Like button -->
+        <div class="action-card" style="padding:var(--sp-2) var(--sp-3);">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:0.95rem;font-weight:600;color:var(--text-mid);">Likes</span>
+            <div id="like-section"></div>
+          </div>
+        </div>
+
+        <div class="sdg-card" style="flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="sdg-badge">SDG<br>4</div>
+            <div><div class="sdg-title">Quality Education</div><div class="sdg-sub">UN SDG 4 aligned</div></div>
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0;">Supports free access to quality learning materials in Sierra Leone.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="alert-top" id="sl-alert-top"></div>
+
+<footer class="footer">
+  <div class="wide-container footer-inner">
+    <div><div class="footer-logo">Sierra<span>Learn</span></div><div class="footer-sub">Open educational resources for Sierra Leone · MIT License</div></div>
+    <nav class="footer-links"><a href="index.html">Library</a><a href="upload.html">Upload</a><a href="privacy.html">Privacy</a></nav>
+  </div>
+</footer>
+</div>
+
+<script type="module">
+  import { initAuth, currentProfile, isGuest } from './auth.js';
+  import { fetchResourceById, bumpDownload, submitRating, getUserRating, fetchComments, addComment, deleteComment, toggleLike, getUserLike, fetchLikeCount, createNotification } from './supabase.js';
+
+  const LICENSE_INFO = {
+    'MIT':{name:'MIT License',chip:'chip-mit',summary:'Maximum freedom — use, copy, modify, and distribute for any purpose.',permissions:['Use for any purpose','Copy and distribute freely','Modify and adapt','Commercial use allowed'],conditions:['Include original license text']},
+    'Apache 2.0':{name:'Apache License 2.0',chip:'chip-apache',summary:'Permissive with explicit patent rights.',permissions:['Use and distribute','Modify and adapt','Patent use granted','Commercial use allowed'],conditions:['Include NOTICE file','State changes made']},
+    'CC BY 4.0':{name:'Creative Commons Attribution 4.0',chip:'chip-cc',summary:'Share and adapt freely with credit to the creator.',permissions:['Share and redistribute','Adapt and remix','Commercial use allowed'],conditions:['Credit the original creator','Indicate changes']},
+    'GPL 3.0':{name:'GNU GPL 3.0',chip:'chip-gpl',summary:'Copyleft — use and modify freely but derivatives must be open source.',permissions:['Use and study freely','Modify and adapt','Distribute freely'],conditions:['Derivatives must use GPL 3.0','Source must be available']},
+  };
+  const TYPE_LABELS={pdf:'PDF Document',doc:'Document',vid:'Video Lecture',img:'Image / Infographic',link:'External Link'};
+
+  function fmtDate(iso){return!iso?'—':new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}
+  function timeAgo(iso){if(!iso)return'';const d=Date.now()-new Date(iso).getTime(),m=Math.floor(d/60000),h=Math.floor(d/3600000),dy=Math.floor(d/86400000),w=Math.floor(dy/7),mo=Math.floor(dy/30);if(m<1)return'Just now';if(m<60)return m+' min ago';if(h<24)return h+' hour'+(h>1?'s':'')+' ago';if(dy<7)return dy+' day'+(dy>1?'s':'')+' ago';if(w<5)return w+' week'+(w>1?'s':'')+' ago';return mo+' month'+(mo>1?'s':'')+' ago';}
+  function sx(s){return s==null?'':String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function avg(r){return r.rating_count?Math.round(r.rating_sum/r.rating_count*10)/10:0;}
+
+  function alertTop(msg,type='success'){
+    const el=document.getElementById('sl-alert-top');
+    el.className=`alert-top alert-top-${type}`;
+    el.innerHTML=`<span class="alert-top-icon alert-icon-${type}"><svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span><span>${msg}</span>`;
+    void el.offsetWidth;el.classList.add('alert-top-show');
+    setTimeout(()=>el.classList.remove('alert-top-show'),3800);
+  }
+
+  const id=new URLSearchParams(window.location.search).get('id');
+  let resource=null;
+
+  document.addEventListener('DOMContentLoaded',async()=>{
+    const profile=await initAuth();
+    if(!id)return showNotFound();
+    try{resource=await fetchResourceById(id);if(!resource)return showNotFound();render(resource,profile);}
+    catch(e){showNotFound();}
+    /* License accordion */
+    const head=document.getElementById('license-head');
+    head.addEventListener('click',()=>{const o=document.getElementById('license-accord').classList.toggle('open');head.setAttribute('aria-expanded',o);});
+    head.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();head.click();}});
+  });
+
+  function render(r,profile){
+    document.title=r.title+' — SierraLearn';
+    document.getElementById('bc-subject').textContent=r.subject;
+    document.getElementById('bc-title').textContent=r.title.slice(0,45)+(r.title.length>45?'…':'');
+    document.getElementById('detail-type-pill').textContent=TYPE_LABELS[r.type]||r.type;
+    document.getElementById('detail-title').textContent=r.title;
+    document.getElementById('detail-desc').textContent=r.description;
+    document.getElementById('detail-timestamp').textContent=timeAgo(r.created_at);
+    document.getElementById('detail-fulldate').textContent=fmtDate(r.created_at);
+    const chips=document.getElementById('detail-chips');
+    [r.subject,r.level,r.license].forEach(v=>{const c=document.createElement('span');c.className='detail-chip';c.textContent=v;chips.appendChild(c);});
+    (r.tags||[]).slice(0,3).forEach(t=>{const c=document.createElement('span');c.className='detail-chip';c.textContent='#'+t;chips.appendChild(c);});
+    document.getElementById('detail-full-desc').textContent=r.description;
+    document.getElementById('meta-subject').textContent=r.subject;
+    document.getElementById('meta-level').textContent=r.level;
+    document.getElementById('meta-type').textContent=TYPE_LABELS[r.type]||r.type;
+    document.getElementById('meta-size').textContent=r.file_size||'Not specified';
+    document.getElementById('meta-dl').textContent=(r.downloads||0).toLocaleString()+' downloads';
+    const a=avg(r);
+    document.getElementById('meta-rating').textContent=a>0?a+' / 5 ('+r.rating_count+' ratings)':'0';
+    /* Contributor */
+    const contribAvatar=document.getElementById('contrib-avatar');
+    if(r.avatar_url){contribAvatar.innerHTML=`<img src="${r.avatar_url}" alt="avatar" style="width:100%;height:100%;object-fit:cover;">`;}
+    else{contribAvatar.textContent=(r.uploader_name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+    document.getElementById('contrib-name').textContent=r.uploader_name;
+    /* Rating */
+    buildRatingWidget(r,profile);
+    /* License */
+    const info=LICENSE_INFO[r.license]||LICENSE_INFO['MIT'];
+    document.getElementById('license-chip-el').textContent=r.license;
+    document.getElementById('license-chip-el').className='license-chip '+(info.chip||'chip-mit');
+    document.getElementById('license-title').textContent=info.name;
+    document.getElementById('license-summary').textContent=info.summary;
+    const permsEl=document.getElementById('license-perms');
+    const chk='<path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>';
+    const wrn='<path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>';
+    [...info.permissions.map(p=>({t:p,type:'allow'})),...info.conditions.map(c=>({t:c,type:'warn'}))].forEach(({t,type})=>{
+      const d=document.createElement('div');d.className='license-perm';
+      d.innerHTML=`<div class="perm-icon ${type==='allow'?'perm-allow':'perm-warn'}"><svg viewBox="0 0 20 20" fill="currentColor">${type==='allow'?chk:wrn}</svg></div><span>${sx(t)}</span>`;
+      permsEl.appendChild(d);
+    });
+    /* Sidebar */
+    buildDownloadSection(r,profile);
+    buildLikeSection(r,profile);
+    refreshSidebar(r);
+    /* Comments */
+    buildComments(r,profile);
+    /* Show */
+    document.getElementById('loading-state').style.display='none';
+    document.getElementById('detail-content').style.display='block';
+    document.getElementById('detail-sidebar').style.display='flex';
+    /* Scroll reveal */
+    const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    /* Copy link */
+    document.getElementById('copy-link-btn').addEventListener('click',()=>{navigator.clipboard.writeText(location.href).then(()=>alertTop('Link copied ✓','success'));});
+  }
+
+  function buildDownloadSection(r,profile){
+    const el=document.getElementById('download-section');
+    if(!profile){
+      /* Guest — show sign-in prompt instead of download */
+      el.innerHTML=`
+        <div class="guest-prompt" style="padding:var(--sp-3);margin-bottom:var(--sp-2);">
+          <h3 style="font-size:1.1rem;margin-bottom:6px;">Sign in to Download</h3>
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:var(--sp-2);">Create a free account to download and rate resources.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="signup.html" class="btn" style="background:#fff;color:var(--royal);font-size:0.9rem;padding:9px 18px;flex:1;justify-content:center;">Get Started Free</a>
+            <a href="login.html" class="btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);font-size:0.9rem;padding:9px 18px;flex:1;justify-content:center;">Sign In</a>
+          </div>
+        </div>`;
+      return;
+    }
+    el.innerHTML=`<button class="btn btn-green btn-full btn-lg" id="download-btn" style="margin-bottom:8px;">
+      <svg viewBox="0 0 20 20" fill="white" style="width:18px;height:18px;flex-shrink:0"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      Download Resource</button>`;
+    document.getElementById('download-btn').addEventListener('click',async()=>{
+      if(r.file_url){
+        const a=Object.assign(document.createElement('a'),{href:r.file_url,download:r.file_name||r.title,target:'_blank'});
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
+      } else {
+        const content=`SierraLearn Resource\n\nTitle: ${r.title}\nSubject: ${r.subject}\nLevel: ${r.level}\nLicense: ${r.license}\nContributor: ${r.uploader_name}\n\n${r.description}`;
+        const blob=new Blob([content],{type:'text/plain'});
+        const url=URL.createObjectURL(blob);
+        const a=Object.assign(document.createElement('a'),{href:url,download:r.title.replace(/[^a-z0-9]/gi,'_')+'.txt'});
+        document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+      }
+      await bumpDownload(r.id);
+      r.downloads=(r.downloads||0)+1;
+      refreshSidebar(r);
+      alertTop('Download started — enjoy the resource! ✓','success');
+    });
+  }
+
+  async function buildLikeSection(r,profile){
+    const el=document.getElementById('like-section');
+    let likeCount=r.like_count||0;
+    let liked=false;
+    if(profile){liked=await getUserLike(r.id,profile.id);}
+    const render=()=>{
+      el.innerHTML=`<button id="like-btn" class="btn-like ${liked?'liked':''}" ${!profile?'title="Sign in to like"':''}>
+        <svg viewBox="0 0 20 20" fill="currentColor" style="width:16px;height:16px">${liked?'<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>':'<path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>'}</svg>
+        ${likeCount} Like${likeCount!==1?'s':''}
+      </button>`;
+      document.getElementById('like-btn').addEventListener('click',async()=>{
+        if(!profile){window.location.href='login.html';return;}
+        liked=await toggleLike(r.id,profile.id);
+        likeCount=liked?likeCount+1:likeCount-1;
+        r.like_count=likeCount;
+        refreshSidebar(r);
+        render();
+        /* Notify teacher if liked */
+        if(liked&&r.uploader_id!==profile.id){
+          try{await createNotification({userId:r.uploader_id,type:'like',message:`${profile.full_name} liked your resource "${r.title}"`,resourceId:r.id});}catch(e){}
+        }
+      });
+    };
+    render();
+  }
+
+  function refreshSidebar(r){
+    const a=avg(r);
+    document.getElementById('s-dl').textContent=(r.downloads||0).toLocaleString();
+    document.getElementById('s-likes').textContent=(r.like_count||0).toLocaleString();
+    document.getElementById('s-avg').textContent=a>0?'★ '+a+' / 5':'0';
+    document.getElementById('s-rcount').textContent=(r.rating_count||0)+' ratings';
+    document.getElementById('s-lic').textContent=r.license;
+    document.getElementById('s-date').textContent=fmtDate(r.created_at);
+    document.getElementById('meta-dl').textContent=(r.downloads||0).toLocaleString()+' downloads';
+  }
+
+  async function buildRatingWidget(r,profile){
+    const mount=document.getElementById('rating-mount');
+    const a=avg(r);
+    let existingScore=null;
+    if(profile){try{existingScore=await getUserRating(r.id,profile.id);}catch(e){}}
+    mount.innerHTML=`<div class="rating-widget">
+      <div class="rating-current">
+        <span class="rating-avg" id="rw-avg">${a||'0'}</span>
+        <div id="rw-stars" style="display:flex;gap:2px;">${[1,2,3,4,5].map(i=>`<span style="color:${i<=a?'var(--yellow)':'#475569'};font-size:22px;">${i<=a?'★':'☆'}</span>`).join('')}</div>
+        <span class="rating-count" id="rw-count">${r.rating_count||0} rating${r.rating_count!==1?'s':''}</span>
+      </div>
+      ${!profile
+        ?`<p style="font-size:0.9rem;color:#92400e;"><a href="login.html" style="color:var(--sky-dark);font-weight:600;">Sign in</a> to rate this resource.</p>`
+        :existingScore
+          ?`<p style="font-size:0.9rem;color:#166534;font-weight:600;">You rated this ${existingScore} star${existingScore>1?'s':''} ⭐</p>`
+          :`<div class="rating-input-label">Rate this resource:</div>
+            <div id="rw-input" class="rating-input">${[1,2,3,4,5].map(i=>`<button class="rate-star" data-score="${i}" aria-label="${i} star">☆</button>`).join('')}</div>
+            <div id="rw-thanks" style="display:none;font-size:0.95rem;font-weight:600;color:#166534;padding:6px 0;">✅ Thanks for rating!</div>`
+      }</div>`;
+    const stars=mount.querySelectorAll('.rate-star');
+    stars.forEach(btn=>{
+      btn.addEventListener('mouseenter',()=>{const v=+btn.dataset.score;stars.forEach(s=>{s.textContent=+s.dataset.score<=v?'★':'☆';s.style.color=+s.dataset.score<=v?'var(--yellow)':'#d97706';});});
+      btn.addEventListener('mouseleave',()=>{stars.forEach(s=>{s.textContent='☆';s.style.color='#d97706';});});
+      btn.addEventListener('click',async()=>{
+        if(!profile){window.location.href='login.html';return;}
+        try{
+          const result=await submitRating(r.id,profile.id,+btn.dataset.score);
+          mount.querySelector('#rw-avg').textContent=result.avg_rating;
+          mount.querySelector('#rw-stars').innerHTML=[1,2,3,4,5].map(i=>`<span style="color:${i<=result.avg_rating?'var(--yellow)':'#475569'};font-size:22px;">${i<=result.avg_rating?'★':'☆'}</span>`).join('');
+          mount.querySelector('#rw-count').textContent=result.total_ratings+' rating'+(result.total_ratings!==1?'s':'');
+          mount.querySelector('#rw-input')?.remove();mount.querySelector('.rating-input-label')?.remove();
+          const th=mount.querySelector('#rw-thanks');if(th)th.style.display='block';
+          r.rating_sum=result.avg_rating*result.total_ratings;r.rating_count=result.total_ratings;
+          refreshSidebar(r);alertTop('Rating submitted — thank you! ⭐','success');
+        }catch(e){alertTop('Could not submit rating','warn');}
+      });
+    });
+  }
+
+  async function buildComments(r,profile){
+    const mount=document.getElementById('comments-mount');
+    mount.innerHTML='<div style="color:var(--text-faint);font-size:0.9rem;padding:12px 0;">Loading comments…</div>';
+    try{
+      let comments=await fetchComments(r.id);
+      document.getElementById('comment-count-label').textContent=`(${comments.length})`;
+      renderComments(comments,r,profile,mount);
+    }catch(e){mount.innerHTML='<div style="color:var(--red);font-size:0.9rem;">Failed to load comments.</div>';}
+  }
+
+  function renderComments(comments,r,profile,mount){
+    document.getElementById('comment-count-label').textContent=`(${comments.length})`;
+    mount.innerHTML='';
+    const list=document.createElement('div');list.className='comments-section';
+    if(!comments.length){list.innerHTML='<div class="no-comments">No comments yet. Be the first to share your thoughts!</div>';}
+    comments.forEach(c=>{
+      const init=(c.profiles?.full_name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+      const div=document.createElement('div');div.className='comment-item';
+      div.innerHTML=`
+        <div class="comment-avatar">${c.profiles?.avatar_url?`<img src="${c.profiles.avatar_url}" alt="${sx(init)}">`:`${sx(init)}`}</div>
+        <div class="comment-body">
+          <div class="comment-meta">
+            <span class="comment-author">${sx(c.profiles?.full_name||'Anonymous')}</span>
+            ${c.profiles?.role?`<span class="comment-role nav-role-${c.profiles.role}">${c.profiles.role}</span>`:''}
+            <span class="comment-time">${timeAgo(c.created_at)}</span>
+            ${profile&&(profile.id===c.user_id||profile.role==='admin')?`<button class="comment-delete" data-id="${c.id}">Delete</button>`:''}
+          </div>
+          <div class="comment-text">${sx(c.content)}</div>
+        </div>`;
+      div.querySelector('.comment-delete')?.addEventListener('click',async()=>{
+        try{
+          await deleteComment(c.id);
+          comments=comments.filter(x=>x.id!==c.id);
+          renderComments(comments,r,profile,mount);
+          alertTop('Comment deleted','success');
+        }catch(e){alertTop('Failed to delete','warn');}
+      });
+      list.appendChild(div);
+    });
+    mount.appendChild(list);
+    /* Comment input */
+    if(!profile){
+      const p=document.createElement('p');
+      p.style.cssText='margin-top:var(--sp-2);font-size:0.9rem;color:var(--text-muted);';
+      p.innerHTML=`<a href="login.html" style="color:var(--sky-dark);font-weight:600;">Sign in</a> to leave a comment.`;
+      mount.appendChild(p);
+      return;
+    }
+    const init=profile.full_name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    const inputWrap=document.createElement('div');inputWrap.className='comment-input-wrap';
+    inputWrap.innerHTML=`
+      <div class="comment-input-avatar">${profile.avatar_url?`<img src="${profile.avatar_url}" alt="${sx(init)}">`:`${sx(init)}`}</div>
+      <div class="comment-input-field">
+        <textarea class="comment-textarea" id="comment-text" placeholder="Share your thoughts on this resource…" rows="3"></textarea>
+        <div class="comment-actions">
+          <button class="btn btn-ghost" id="comment-cancel" style="font-size:0.9rem;padding:8px 16px;">Cancel</button>
+          <button class="btn btn-primary" id="comment-submit" style="font-size:0.9rem;padding:8px 20px;">Post Comment</button>
+        </div>
+      </div>`;
+    mount.appendChild(inputWrap);
+    document.getElementById('comment-cancel').addEventListener('click',()=>{document.getElementById('comment-text').value='';});
+    document.getElementById('comment-submit').addEventListener('click',async()=>{
+      const text=document.getElementById('comment-text').value.trim();
+      if(!text){alertTop('Please write a comment first','warn');return;}
+      const btn=document.getElementById('comment-submit');
+      btn.classList.add('btn-loading');btn.disabled=true;
+      try{
+        const newComment=await addComment(r.id,profile.id,text);
+        comments=[...comments,newComment];
+        renderComments(comments,r,profile,mount);
+        alertTop('Comment posted ✓','success');
+        /* Notify teacher */
+        if(r.uploader_id!==profile.id){
+          try{await createNotification({userId:r.uploader_id,type:'comment',message:`${profile.full_name} commented on your resource "${r.title}"`,resourceId:r.id});}catch(e){}
+        }
+      }catch(e){alertTop('Failed to post: '+e.message,'warn');btn.classList.remove('btn-loading');btn.disabled=false;}
+    });
+  }
+
+  function showNotFound(){document.getElementById('loading-state').style.display='none';document.getElementById('not-found').style.display='block';}
+</script>
+</body>
+</html>
