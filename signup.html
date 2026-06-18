@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — SierraLearn</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fmtcaqhzimndqgidtiks.supabase.co" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap"></noscript>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <div class="auth-logo-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Sierra<span>Learn</span>
+    </div>
+
+    <h1 class="auth-title">Create your account</h1>
+    <p class="auth-subtitle">Join Sierra Leone's open education platform</p>
+
+    <div class="auth-error" id="auth-error"></div>
+
+    <!-- Role selector -->
+    <div style="margin-bottom:var(--sp-3);">
+      <div class="form-label" style="margin-bottom:var(--sp-1);">I am a…</div>
+      <div class="role-selector">
+        <div class="role-option selected" data-role="student" tabindex="0" role="radio" aria-checked="true">
+          <div class="role-icon">🎓</div>
+          <div class="role-label">Student</div>
+          <div class="role-desc">Browse and download free educational resources</div>
+        </div>
+        <div class="role-option" data-role="teacher" tabindex="0" role="radio" aria-checked="false">
+          <div class="role-icon">👨‍🏫</div>
+          <div class="role-label">Teacher</div>
+          <div class="role-desc">Upload resources and contribute to the library</div>
+        </div>
+      </div>
+    </div>
+
+    <form id="signup-form" novalidate>
+
+      <div class="form-group">
+        <label class="form-label" for="fullname">Full Name</label>
+        <input type="text" id="fullname" class="form-input" placeholder="Your full name" required autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" class="form-input" placeholder="you@example.com" required autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <div style="position:relative;">
+          <input type="password" id="password" class="form-input" placeholder="At least 8 characters" required autocomplete="new-password" style="padding-right:48px;">
+          <button type="button" id="toggle-pw" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-faint);cursor:pointer;padding:0;" aria-label="Toggle password">
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <span class="form-hint" id="pw-strength"></span>
+      </div>
+
+      <!-- Terms -->
+      <div class="consent-row" style="margin-bottom:var(--sp-3);">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I agree to the <a href="privacy.html" target="_blank">Privacy Policy</a> and understand that uploaded content must be openly licensed.</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-btn">
+        Create Account
+      </button>
+
+    </form>
+
+    <p class="auth-link">Already have an account? <a href="login.html">Sign in</a></p>
+    <p class="auth-link" style="margin-top:8px;"><a href="index.html" style="color:var(--text-muted);">← Continue as guest</a></p>
+
+  </div>
+</div>
+
+<script type="module">
+  import { signUp, getSession } from './supabase.js';
+
+  getSession().then(s => { if (s) window.location.href = 'index.html'; });
+
+  let selectedRole = 'student';
+
+  /* Role selector */
+  document.querySelectorAll('.role-option').forEach(opt => {
+    const select = () => {
+      selectedRole = opt.dataset.role;
+      document.querySelectorAll('.role-option').forEach(o => { o.classList.remove('selected'); o.setAttribute('aria-checked','false'); });
+      opt.classList.add('selected'); opt.setAttribute('aria-checked','true');
+    };
+    opt.addEventListener('click', select);
+    opt.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();select();} });
+  });
+
+  /* Password toggle */
+  document.getElementById('toggle-pw').addEventListener('click', () => {
+    const pw = document.getElementById('password');
+    pw.type = pw.type === 'password' ? 'text' : 'password';
+  });
+
+  /* Password strength indicator */
+  document.getElementById('password').addEventListener('input', e => {
+    const val = e.target.value;
+    const hint = document.getElementById('pw-strength');
+    if (!val) { hint.textContent=''; return; }
+    if (val.length < 6)  { hint.textContent='Too short'; hint.style.color='var(--red)'; return; }
+    if (val.length < 10) { hint.textContent='Fair'; hint.style.color='var(--yellow)'; return; }
+    hint.textContent='Strong ✓'; hint.style.color='var(--green)';
+  });
+
+  document.getElementById('signup-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const fullName = document.getElementById('fullname').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+    const terms    = document.getElementById('terms').checked;
+    const errEl    = document.getElementById('auth-error');
+    errEl.classList.remove('show');
+
+    if (!fullName) { errEl.textContent='Please enter your full name.'; errEl.classList.add('show'); return; }
+    if (!email)    { errEl.textContent='Please enter your email.'; errEl.classList.add('show'); return; }
+    if (password.length < 8) { errEl.textContent='Password must be at least 8 characters.'; errEl.classList.add('show'); return; }
+    if (!terms)    { errEl.textContent='Please accept the privacy policy.'; errEl.classList.add('show'); return; }
+
+    const btn = document.getElementById('submit-btn');
+    btn.classList.add('btn-loading'); btn.disabled = true;
+
+    try {
+      await signUp({ email, password, fullName, role: selectedRole });
+      /* Show success, redirect to login */
+      document.querySelector('.auth-card').innerHTML = `
+        <div style="text-align:center;padding:var(--sp-4) 0;">
+          <div style="font-size:3rem;margin-bottom:var(--sp-2);">✅</div>
+          <h2 style="font-size:1.6rem;margin-bottom:10px;">Account Created!</h2>
+          <p style="color:var(--text-muted);margin-bottom:var(--sp-3);">
+            Check your email to confirm your account, then sign in.
+          </p>
+          <a href="login.html" class="btn btn-primary" style="display:inline-flex;width:auto;">Go to Sign In</a>
+        </div>`;
+    } catch(err) {
+      btn.classList.remove('btn-loading'); btn.disabled = false;
+      errEl.textContent = err.message || 'Registration failed. Please try again.';
+      errEl.classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>

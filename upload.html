@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Resource — SierraLearn</title>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fmtcaqhzimndqgidtiks.supabase.co" crossorigin>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@300,400,500,600,700&display=swap"></noscript>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="mesh-bg" aria-hidden="true"><div class="mesh-orb mesh-orb-1"></div><div class="mesh-orb mesh-orb-2"></div></div>
+
+<nav class="navbar" role="navigation">
+  <div class="wide-container navbar-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      Sierra<span>Learn</span>
+    </a>
+    <div class="nav-right"></div>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <header class="page-hero">
+    <div class="page-hero-glow" aria-hidden="true"></div>
+    <div class="wide-container">
+      <button class="mobile-back-btn" id="back-btn" type="button">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/></svg>
+        Back
+      </button>
+      <div class="page-hero-eyebrow"><span class="dot"></span>Creator Studio</div>
+      <h1>Upload a Resource</h1>
+      <p>Submit openly licensed content for Sierra Leone. Your submission is reviewed by an admin before going live.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wide-container upload-layout">
+
+      <!-- LEFT: Form -->
+      <div>
+        <div class="white-card">
+          <form id="upload-form" novalidate>
+
+            <div class="form-group">
+              <label class="form-label" for="res-title">Resource Title <span class="req">*</span></label>
+              <input type="text" id="res-title" class="form-input" placeholder="e.g. Introduction to Algebra for JSS Students" maxlength="120" required oninput="updatePreview()">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-uploader-display">Your Name</label>
+              <input type="text" id="res-uploader-display" class="form-input" disabled style="background:var(--bg);color:var(--text-muted);" placeholder="Loading…">
+            </div>
+
+            <!-- License dropdown -->
+            <div class="license-inline-wrap">
+              <span class="license-inline-label">Open Source License <span class="req">*</span></span>
+              <button type="button" class="license-inline-btn" id="lic-btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="lic-dot lic-dot-mit" id="lic-btn-dot"></span>
+                <span class="license-inline-btn-name" id="lic-btn-name">MIT License</span>
+                <span class="license-inline-btn-desc" id="lic-btn-desc">Maximum freedom</span>
+                <span class="license-inline-btn-arrow"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></span>
+              </button>
+              <div class="license-inline-dropdown" id="lic-dropdown" role="listbox">
+                <div class="license-inline-option selected" data-l="MIT" data-dot="lic-dot-mit" data-desc="Maximum freedom · use, modify, distribute" tabindex="0"><span class="lic-dot lic-dot-mit"></span><div class="lic-opt-info"><div class="lic-opt-name">MIT License</div><div class="lic-opt-desc">Maximum freedom</div></div><span class="lic-opt-check"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></div>
+                <div class="license-inline-option" data-l="Apache 2.0" data-dot="lic-dot-apache" data-desc="Permissive with patent grant" tabindex="0"><span class="lic-dot lic-dot-apache"></span><div class="lic-opt-info"><div class="lic-opt-name">Apache 2.0</div><div class="lic-opt-desc">Permissive with patent grant</div></div><span class="lic-opt-check"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></div>
+                <div class="license-inline-option" data-l="CC BY 4.0" data-dot="lic-dot-cc" data-desc="Share & adapt · credit required" tabindex="0"><span class="lic-dot lic-dot-cc"></span><div class="lic-opt-info"><div class="lic-opt-name">CC BY 4.0</div><div class="lic-opt-desc">Share & adapt · credit required</div></div><span class="lic-opt-check"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></div>
+                <div class="license-inline-option" data-l="GPL 3.0" data-dot="lic-dot-gpl" data-desc="Copyleft · derivatives stay open" tabindex="0"><span class="lic-dot lic-dot-gpl"></span><div class="lic-opt-info"><div class="lic-opt-name">GPL 3.0</div><div class="lic-opt-desc">Copyleft</div></div><span class="lic-opt-check"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-desc">Description <span class="req">*</span></label>
+              <textarea id="res-desc" class="form-textarea" placeholder="Describe what this resource covers…" rows="4" maxlength="600" required oninput="updatePreview()"></textarea>
+              <span class="form-hint" id="desc-count">0 / 600 characters</span>
+            </div>
+
+            <div class="form-row">
+              <!-- Subject with "Other — type your own" option -->
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="res-subject">Subject <span class="req">*</span></label>
+                <div class="custom-select-wrap">
+                  <span class="custom-select-icon"><svg viewBox="0 0 20 20" fill="#38bdf8"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/></svg></span>
+                  <select id="res-subject" class="form-select-icon" required onchange="toggleCustomSubject(); updatePreview();">
+                    <option value="">Select subject</option>
+                    <option>Mathematics</option><option>English</option><option>Science</option>
+                    <option>Social Studies</option><option>ICT</option><option>Agriculture</option>
+                    <option>Business Studies</option><option>French</option>
+                    <option value="__custom__">Other — type your own…</option>
+                  </select>
+                </div>
+                <!-- Custom subject input — shown when "Other" selected -->
+                <input type="text" id="res-subject-custom" class="form-input" placeholder="Type your subject…" style="display:none;margin-top:8px;" oninput="updatePreview()">
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="res-level">School Level <span class="req">*</span></label>
+                <div class="custom-select-wrap">
+                  <span class="custom-select-icon"><svg viewBox="0 0 20 20" fill="#22c55e"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zm5.99 7.176A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/></svg></span>
+                  <select id="res-level" class="form-select-icon" required oninput="updatePreview()">
+                    <option value="">Select level</option>
+                    <option>Primary</option><option>Junior Secondary</option>
+                    <option>Senior Secondary</option><option>Tertiary</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style="margin-bottom:var(--sp-3)"></div>
+
+            <!-- Resource type — controls accepted file types -->
+            <div class="form-group">
+              <label class="form-label" for="res-type">Resource Type <span class="req">*</span></label>
+              <div class="custom-select-wrap">
+                <span class="custom-select-icon"><svg viewBox="0 0 20 20" fill="#0284c7"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/></svg></span>
+                <select id="res-type" class="form-select-icon" required onchange="updateFileAccept(); updatePreview();">
+                  <option value="">Select type</option>
+                  <option value="pdf">PDF Document</option>
+                  <option value="doc">Word / Text Document</option>
+                  <option value="vid">Video / Lecture</option>
+                  <option value="img">Image / Infographic</option>
+                  <option value="link">External Link</option>
+                </select>
+              </div>
+              <span class="form-hint" id="type-hint"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="res-tags">Tags</label>
+              <input type="text" id="res-tags" class="form-input" placeholder="e.g. algebra, WAEC, fractions (comma-separated)" oninput="updatePreview()">
+              <span class="form-hint">Separate with commas · max 5 tags</span>
+            </div>
+
+            <!-- File upload — accepts only the type selected above -->
+            <div class="form-group">
+              <label class="form-label">Upload File <span style="font-weight:400;color:var(--green);font-size:11px;text-transform:none;letter-spacing:0;margin-left:6px;">— must match the type selected above</span></label>
+              <div class="drop-zone" id="drop-zone" tabindex="0" role="button">
+                <div class="dz-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="dz-title" id="dz-title">Select a type first, then upload</div>
+                <p class="dz-sub">or <span class="dz-link" id="dz-browse">browse to upload</span></p>
+                <p class="dz-hint" id="dz-hint">Choose resource type above to see accepted formats</p>
+                <input type="file" id="file-input">
+              </div>
+              <div id="file-chip" style="display:none;" class="file-chip">
+                <span class="file-chip-icon"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a3 3 0 013-3z" clip-rule="evenodd"/></svg></span>
+                <span id="file-chip-name"></span>
+                <button type="button" id="file-chip-remove" class="file-chip-remove">✕</button>
+              </div>
+              <div id="upload-progress" style="display:none;margin-top:var(--sp-2);">
+                <div style="background:var(--border);border-radius:999px;height:8px;overflow:hidden;"><div id="progress-bar" style="background:linear-gradient(90deg,var(--sky-dark),var(--sky));height:100%;border-radius:999px;width:0%;transition:width 0.3s ease;"></div></div>
+                <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;" id="progress-label">Uploading…</p>
+              </div>
+            </div>
+
+            <div class="consent-row">
+              <input type="checkbox" id="consent" required>
+              <label for="consent">I confirm this resource is openly licensed. I agree to the <a href="privacy.html">Privacy Policy</a>. I understand submissions are reviewed before going live.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-btn">
+              <svg viewBox="0 0 20 20" fill="white" style="width:18px;height:18px;flex-shrink:0"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+              Submit for Review
+            </button>
+
+            <!-- Approval note BELOW the button as plain text -->
+            <p style="text-align:center;font-size:0.88rem;color:var(--text-muted);margin-top:12px;line-height:1.5;">
+              ⏳ Your submission will be reviewed by an admin before appearing in the public library. You can track its status in <a href="profile.html" style="color:var(--sky-dark);font-weight:600;">your profile</a>.
+            </p>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT: Sidebar -->
+      <div>
+        <div class="white-card-sm">
+          <div class="preview-label">Live Preview</div>
+          <div class="preview-card-inner">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;">
+              <div id="pv-icon" style="width:44px;height:44px;"></div>
+              <span id="pv-chip" class="license-chip chip-mit">MIT</span>
+            </div>
+            <div class="preview-resource-title" id="pv-title">Resource title will appear here…</div>
+            <div class="preview-resource-desc" id="pv-desc">Your description will appear here as you type.</div>
+            <div class="preview-meta" id="pv-meta"></div>
+          </div>
+        </div>
+        <div class="sdg-card">
+          <div class="sdg-badge">SDG<br>4</div>
+          <div class="sdg-info"><div class="sdg-title">Quality Education</div><div class="sdg-sub">Your upload supports SDG 4 — free access to education in Sierra Leone.</div></div>
+        </div>
+        <div class="white-card-sm" style="margin-top:4px">
+          <div class="preview-label">Upload Guidelines</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;">
+            <li style="font-size:0.95rem;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;"><svg style="width:14px;height:14px;fill:var(--green);flex-shrink:0;margin-top:3px" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Only share content you have rights to</li>
+            <li style="font-size:0.95rem;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;"><svg style="width:14px;height:14px;fill:var(--green);flex-shrink:0;margin-top:3px" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>File must match the selected type</li>
+            <li style="font-size:0.95rem;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;"><svg style="width:14px;height:14px;fill:var(--green);flex-shrink:0;margin-top:3px" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Educational content only</li>
+            <li style="font-size:0.95rem;color:var(--text-mid);display:flex;gap:8px;align-items:flex-start;"><svg style="width:14px;height:14px;fill:var(--green);flex-shrink:0;margin-top:3px" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Max file size: 50 MB</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="wide-container footer-inner"><div><div class="footer-logo">Sierra<span>Learn</span></div><div class="footer-sub">Open educational resources for Sierra Leone · MIT License</div></div><nav class="footer-links"><a href="index.html">Library</a><a href="privacy.html">Privacy</a></nav></div></footer>
+</div>
+
+<div class="alert-top" id="sl-alert-top"></div>
+
+<script type="module">
+  import { initAuth, currentProfile, goBackOrHome, markIntraAppNav } from './auth.js';
+  import { submitResource, uploadFile } from './supabase.js';
+
+  const SVG_ICONS = {
+    pdf:`<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="10" fill="#ef4444"/><text x="24" y="32" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="white">PDF</text></svg>`,
+    doc:`<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="10" fill="#2563eb"/></svg>`,
+    vid:`<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="10" fill="#d97706"/></svg>`,
+    img:`<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="10" fill="#16a34a"/></svg>`,
+    link:`<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="10" fill="#7c3aed"/></svg>`,
+  };
+  const CHIP={'MIT':'chip-mit','Apache 2.0':'chip-apache','CC BY 4.0':'chip-cc','GPL 3.0':'chip-gpl'};
+
+  /* File type accept map — enforces correct file type per resource type */
+  const TYPE_ACCEPT = {
+    pdf:  { accept:'.pdf', hint:'Only PDF files (.pdf)', mime:['application/pdf'] },
+    doc:  { accept:'.doc,.docx,.txt,.odt', hint:'Word/text files (.doc, .docx, .txt, .odt)', mime:['application/msword','application/vnd.openxmlformats-officedocument.wordprocessingml.document','text/plain','application/vnd.oasis.opendocument.text'] },
+    vid:  { accept:'.mp4,.mov,.avi,.webm', hint:'Video files (.mp4, .mov, .avi, .webm)', mime:['video/mp4','video/quicktime','video/x-msvideo','video/webm'] },
+    img:  { accept:'.jpg,.jpeg,.png,.gif,.webp,.svg', hint:'Image files (.jpg, .png, .gif, .webp)', mime:['image/jpeg','image/png','image/gif','image/webp','image/svg+xml'] },
+    link: { accept:'', hint:'For external links, no file upload needed', mime:[] },
+  };
+
+  function alertTop(msg,type='success'){
+    const el=document.getElementById('sl-alert-top');
+    el.className=`alert-top alert-top-${type}`;
+    el.innerHTML=`<span class="alert-top-icon alert-icon-${type}"><svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></span><span>${msg}</span>`;
+    void el.offsetWidth; el.classList.add('alert-top-show');
+    setTimeout(()=>el.classList.remove('alert-top-show'),3800);
+  }
+
+  /* Toggle custom subject input */
+  window.toggleCustomSubject = function() {
+    const sel = document.getElementById('res-subject');
+    const custom = document.getElementById('res-subject-custom');
+    custom.style.display = sel.value === '__custom__' ? 'block' : 'none';
+    if(sel.value !== '__custom__') custom.value = '';
+  };
+
+  /* Update file accept attribute based on selected type */
+  window.updateFileAccept = function() {
+    const type = document.getElementById('res-type').value;
+    const fi   = document.getElementById('file-input');
+    const hint = document.getElementById('type-hint');
+    const dzTitle = document.getElementById('dz-title');
+    const dzHint  = document.getElementById('dz-hint');
+    if (!type || type === 'link') {
+      fi.accept=''; hint.textContent=''; dzTitle.textContent='No file needed for links'; dzHint.textContent='For external links, enter the URL in the title or description.'; return;
+    }
+    const cfg = TYPE_ACCEPT[type];
+    fi.accept = cfg.accept;
+    hint.textContent = 'Accepted: '+cfg.hint;
+    dzTitle.textContent = 'Drop your file here';
+    dzHint.textContent  = cfg.hint;
+  };
+
+  let selectedLicense = 'MIT';
+  let selectedFile    = null;
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    markIntraAppNav();
+    document.getElementById('back-btn').addEventListener('click', () => goBackOrHome('profile.html'));
+    const profile = await initAuth('teacher-only');
+    if (!profile) return;
+    document.getElementById('res-uploader-display').value = profile.full_name;
+
+    /* License dropdown */
+    const licBtn=document.getElementById('lic-btn'), licDD=document.getElementById('lic-dropdown');
+    licBtn.addEventListener('click',e=>{e.stopPropagation();const o=licDD.classList.toggle('open');licBtn.classList.toggle('open',o);licBtn.setAttribute('aria-expanded',o);});
+    document.addEventListener('click',()=>{licDD.classList.remove('open');licBtn.classList.remove('open');licBtn.setAttribute('aria-expanded','false');});
+    licDD.addEventListener('click',e=>e.stopPropagation());
+    document.querySelectorAll('.license-inline-option').forEach(opt=>{
+      const sel=()=>{
+        selectedLicense=opt.dataset.l;
+        document.querySelectorAll('.license-inline-option').forEach(o=>{o.classList.remove('selected');o.querySelector('.lic-opt-check svg').style.display='none';});
+        opt.classList.add('selected');opt.querySelector('.lic-opt-check svg').style.display='block';
+        document.getElementById('lic-btn-dot').className='lic-dot '+opt.dataset.dot;
+        document.getElementById('lic-btn-name').textContent=opt.querySelector('.lic-opt-name').textContent;
+        document.getElementById('lic-btn-desc').textContent=opt.dataset.desc;
+        licDD.classList.remove('open');licBtn.classList.remove('open');licBtn.setAttribute('aria-expanded','false');
+        updatePreview();
+      };
+      opt.addEventListener('click',sel);
+      opt.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();sel();}});
+    });
+
+    /* File drop zone */
+    const dz=document.getElementById('drop-zone'),fi=document.getElementById('file-input');
+    document.getElementById('dz-browse').addEventListener('click',()=>fi.click());
+    dz.addEventListener('click',()=>fi.click());
+    dz.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();fi.click();}});
+    dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag-over');});
+    dz.addEventListener('dragleave',()=>dz.classList.remove('drag-over'));
+    dz.addEventListener('drop',e=>{e.preventDefault();dz.classList.remove('drag-over');if(e.dataTransfer.files[0])attachFile(e.dataTransfer.files[0]);});
+    fi.addEventListener('change',()=>{if(fi.files[0])attachFile(fi.files[0]);});
+
+    function attachFile(f) {
+      /* Validate file type matches selected resource type */
+      const type = document.getElementById('res-type').value;
+      if (!type) { alertTop('Please select a resource type first','warn'); return; }
+      if (type !== 'link') {
+        const cfg = TYPE_ACCEPT[type];
+        if (cfg.mime.length > 0 && !cfg.mime.includes(f.type) && f.type !== '') {
+          alertTop(`Wrong file type! For "${type.toUpperCase()}", only: ${cfg.hint}`,'warn');
+          fi.value=''; return;
+        }
+      }
+      if (f.size > 50*1024*1024) { alertTop('File too large — max 50 MB','warn'); return; }
+      selectedFile=f;
+      document.getElementById('file-chip-name').textContent=f.name+' ('+(f.size/1024/1024).toFixed(2)+' MB)';
+      document.getElementById('file-chip').style.display='flex';
+      dz.style.display='none';
+    }
+    document.getElementById('file-chip-remove').addEventListener('click',()=>{
+      selectedFile=null;fi.value='';
+      document.getElementById('file-chip').style.display='none';dz.style.display='block';
+    });
+
+    /* Desc counter */
+    document.getElementById('res-desc').addEventListener('input',e=>{document.getElementById('desc-count').textContent=e.target.value.length+' / 600 characters';});
+
+    /* Preview */
+    window.updatePreview = ()=>{
+      const title=document.getElementById('res-title').value;
+      const desc=document.getElementById('res-desc').value;
+      const type=document.getElementById('res-type').value;
+      const subject=document.getElementById('res-subject').value==='__custom__'?document.getElementById('res-subject-custom').value:document.getElementById('res-subject').value;
+      const level=document.getElementById('res-level').value;
+      const tags=document.getElementById('res-tags').value.split(',').map(t=>t.trim()).filter(Boolean).slice(0,3);
+      document.getElementById('pv-title').textContent=title||'Resource title will appear here…';
+      document.getElementById('pv-desc').textContent=desc||'Your description will appear here.';
+      const pvi=document.getElementById('pv-icon');pvi.innerHTML=SVG_ICONS[type]||SVG_ICONS['doc'];
+      const chip=document.getElementById('pv-chip');chip.textContent=selectedLicense;chip.className='license-chip '+(CHIP[selectedLicense]||'chip-mit');
+      const meta=document.getElementById('pv-meta');meta.innerHTML='';
+      [subject,level,...tags].filter(Boolean).forEach(t=>{const s=document.createElement('span');s.className='card-tag';s.textContent=t;meta.appendChild(s);});
+    };
+
+    /* Submit */
+    document.getElementById('upload-form').addEventListener('submit',async e=>{
+      e.preventDefault();
+      const title=document.getElementById('res-title').value.trim();
+      const desc=document.getElementById('res-desc').value.trim();
+      const rawSubject=document.getElementById('res-subject').value;
+      const subject=rawSubject==='__custom__'?document.getElementById('res-subject-custom').value.trim():rawSubject;
+      const level=document.getElementById('res-level').value;
+      const type=document.getElementById('res-type').value;
+      const consent=document.getElementById('consent').checked;
+      if(!title)   return alertTop('Please enter a title','warn');
+      if(!desc)    return alertTop('Please add a description','warn');
+      if(!subject) return alertTop('Please enter or select a subject','warn');
+      if(!level)   return alertTop('Please select a level','warn');
+      if(!type)    return alertTop('Please select a type','warn');
+      if(!consent) return alertTop('Please accept the privacy policy','warn');
+      const tags=document.getElementById('res-tags').value.split(',').map(t=>t.trim()).filter(Boolean).slice(0,5);
+      const btn=document.getElementById('submit-btn');
+      btn.classList.add('btn-loading');btn.disabled=true;
+      try {
+        let fileUrl='',fileName='',fileMime='',fileSize='',storagePath='';
+        if(selectedFile&&type!=='link'){
+          const prog=document.getElementById('upload-progress');
+          prog.style.display='block';document.getElementById('progress-bar').style.width='30%';
+          document.getElementById('progress-label').textContent='Uploading file…';
+          const result=await uploadFile(selectedFile,profile.id);
+          fileUrl=result.publicUrl;storagePath=result.storagePath;
+          fileName=selectedFile.name;fileMime=selectedFile.type;
+          fileSize=(selectedFile.size/1024/1024).toFixed(2)+' MB';
+          document.getElementById('progress-bar').style.width='100%';
+          document.getElementById('progress-label').textContent='File uploaded ✓';
+          setTimeout(()=>{prog.style.display='none';},1200);
+        }
+        await submitResource({title,description:desc,subject,level,type,license:selectedLicense,tags,uploader_id:profile.id,uploader_name:profile.full_name,file_url:fileUrl,file_name:fileName,file_mime:fileMime,file_size:fileSize,storage_path:storagePath});
+        alertTop('Submitted for review! Admin will approve shortly. ✓','success');
+        setTimeout(()=>{window.location.href='index.html';},2000);
+      } catch(err){
+        btn.classList.remove('btn-loading');btn.disabled=false;
+        alertTop('Submission failed: '+err.message,'warn');
+      }
+    });
+  });
+</script>
+</body>
+</html>
